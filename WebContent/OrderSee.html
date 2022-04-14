@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>查看物流</title>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <script src="js/jquery-3.3.1.js"></script>
+</head>
+
+<body>
+
+
+
+    <section class="aui-flexView">
+
+        <section class="aui-scrollView">
+            <div class="aui-flex aui-flex-lag">
+                <div class="aui-aircraft-img">
+                    <img src="images/icon-fj.png" alt="">
+                </div>
+                <div class="aui-flex-box">
+                    <h2>
+                        物流公司：<em id="gs"></em>
+                    </h2>
+                    <h2>
+                        物流单号：<em id="dh"></em>
+                    </h2>
+                </div>
+                <input type="hidden" id="kd" value="" />
+            </div>
+            <div class="divHeight"></div>
+            <div class="aui-flex aui-flex-lag">
+                <div class="aui-flex-box">
+                    <h2 style="color:#333">订单跟踪</h2>
+                </div>
+            </div>
+            <div class="aui-timeLine b-line">
+                <ul class="aui-timeLine-content" id="text">
+
+                </ul>
+            </div>
+            <div class="b-line divHeight"></div>
+
+        </section>
+</body>
+<script>
+
+
+    window.onload = function () {
+
+        function getQueryString(name) {
+            var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) {
+                return unescape(r[2]);
+            }
+            return null;
+        }
+        // 这样调用：
+        var number = getQueryString("text");
+		if(number.length<7){
+			 $("#gs").html("暂无物流信息");
+             $("#dh").html("暂无物流信息");
+             return;
+		}
+
+
+        //获取快递公司
+        $.ajax({
+            async: false,
+            url: "https://www.kuaidi100.com/autonumber/autoComNum",
+            type: "POST",
+            data: { text: number },
+            dataType: "JSONP",
+
+
+            success: function (data) {
+
+               
+                $.ajax({
+                    url: "https://route.showapi.com/64-19",
+                    type: "GET",
+                    async: false,
+                    dataType: "json",
+                    data: { com: data.auto[0].comCode, nu: number, showapi_appid: "85613", showapi_timestamp: new Date().getTime(), showapi_sign: "d39a645b30914746be20b4d0354abcb6" },
+                    success: function (json) {
+                        if(json.showapi_res_body.msg=="查询成功"){
+                        $("#gs").html(json.showapi_res_body.expTextName);
+                        $("#dh").html(json.showapi_res_body.mailNo);
+                        $.each(json.showapi_res_body.data, function (i, item) {
+
+                            $("#text").append(
+                                "<li class='aui-timeLine-content-item'>" +
+                                "<em class='aui-timeLine-content-icon'></em>" +
+                                " <p>" + item.context + "</p>" +
+                                " <p style='margin-top: 10px;'>" + item.time + "</p>" +
+                                " </li>");
+
+
+
+                        });
+                    }else{
+                        $("#gs").html("暂无物流信息");
+                        $("#dh").html("暂无物流信息");
+                        $("#text").append(
+                                "<li class='aui-timeLine-content-item'>" +
+                                "<em class='aui-timeLine-content-icon'></em>" +
+                                " <p>暂无物流信息</p>" +
+                                " <p style='margin-top: 10px;'>暂无物流信息</p>" +
+                                " </li>");  
+
+                    }
+                    }
+
+                });
+
+            }
+        });
+
+
+
+
+
+    }
+
+
+</script>
+
+</html>

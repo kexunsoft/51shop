@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="shop:war exploded">
+    <output-path>$PROJECT_DIR$/classes/artifacts/shop_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="51shop" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="mssql-jdbc-7.0.0.jre8.jar" module-name="shop" />
+          <element id="library" level="module" name="commons-io-2.5.jar" module-name="shop" />
+          <element id="library" level="module" name="commons-fileupload-1.3.2.jar" module-name="shop" />
+          <element id="library" level="module" name="fastjson-1.2.2.jar" module-name="shop" />
+          <element id="library" level="module" name="commons-codec-1.11.jar" module-name="shop" />
+          <element id="library" level="project" name="commons-codec-1.11" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="51shop/web/Web" />
+    </root>
+  </artifact>
+</component>

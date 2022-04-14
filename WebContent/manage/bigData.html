@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>大数据</title>
+		<link rel="stylesheet" href="CSS/bootstrap.min.css" />
+		<link rel="stylesheet" href="CSS/Statistics.css" />
+		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+		<script type="text/javascript" src="JS/jquery-1.11.3.min.js"></script>
+		
+	</head>
+<script>
+	
+</script>
+	<body style="height: 100%;">
+
+		<div class="content" style="height: 100%">
+
+			<div class="row">
+
+				<div class="col-sm-3">
+					<div class="topBor text-center topBor1">
+						<div class="col-sm-5">
+							<i class="fa fa-rmb" aria-hidden="true"></i>
+							<p>成交金额</p>
+						</div>
+						<div class="col-sm-7" id="cje"></div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<div class="topBor text-center topBor2">
+						<div class="col-sm-5">
+							<i class="fa fa-handshake-o" aria-hidden="true"></i>
+							<p>成交订单</p>
+						</div>
+						<div class="col-sm-7" id="ccount">209笔</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<div class="topBor text-center topBor3">
+						<div class="col-sm-5">
+							<i class="fa fa-commenting-o" aria-hidden="true"></i>
+							<p>已收评论</p>
+						</div>
+						<div class="col-sm-7" id="pl">401条</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<div class="topBor text-center topBor4">
+						<div class="col-sm-5">
+							<i class="fa fa-database" aria-hidden="true"></i>
+							<p>商品总数</p>
+						</div>
+						<div class="col-sm-7" id="pcount"></div>
+					</div>
+				</div>
+
+			</div>
+
+			<div id="container" style="height: 40%;width: 45%;margin-left: 20px;float: left;margin-top: 30px;"></div>
+			<div id="container2" style="height: 35%;width: 45%;margin-left: 20px;float: right;margin-top: 30px;"></div>
+
+			<div class="row">
+				<div class="col-sm-7">
+					<div class="order-bor">
+						<div class="leftTitle">订单状态提示</div>
+						<hr />
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="bor-title"><i class="fa fa-th-large goodsLable" aria-hidden="true"></i>商品</div>
+
+								<div class="row ordrline">
+									<div class="col-sm-8">已上架商品</div>
+									<div class="col-sm-4 text-right" id="count"></div>
+									
+								</div>
+
+							</div>
+							
+							<div class="col-sm-6">
+								<div class="bor-title"><i class="fa fa-bars orderLable" aria-hidden="true"></i>订单</div>
+
+								<div class="row ordrline">
+									<div class="col-sm-8" >代发货订单</div>
+									<div class="col-sm-4 text-right" id="dcount"></div>
+									<div class="col-sm-8">已完成订单</div>
+									<div class="col-sm-4 text-right" id="wcount"></div>
+									<div class="col-sm-8">未完成订单</div>
+									<div class="col-sm-4 text-right" id="ncount">(20)</div>
+								</div>
+									<script type="text/javascript">
+									
+										$('#count').load("/shop/SerichOrderAndGoods #count");
+										$('#dcount').load("/shop/SerichOrderAndGoods #dcount");
+										$('#pcount').load("/shop/SerichOrderAndGoods #count");
+										$('#wcount').load("/shop/SerichOrderAndGoods #wcount");
+										$('#ccount').load("/shop/SerichOrderAndGoods #wcount");
+										$('#ncount').load("/shop/SerichOrderAndGoods #ncount");
+										$('#cje').load("/shop/SerichOrderAndGoods #cje");	
+										$('#pl').load("/shop/SerichOrderAndGoods #pj");	
+										
+									
+										
+									</script>
+							</div>
+							
+						</div>
+
+					</div>
+				</div>
+
+				<div class="col-sm-5">
+					<div class="order-bor" id="toplist">
+						<div class="leftTitle">商品销量排行</div>
+						<hr />
+						<div class="row saleLine">
+							<div class="col-sm-2">排名</div>
+							<div class="col-sm-3" style='width:400px;'>商品名称</div>
+						
+							<div class="col-sm-2">销量</div>
+						</div>
+						
+						
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</body>
+	<script type="text/javascript">
+	$.ajax({
+	    url:"http://localhost:8080/shop/SerichTop5",
+	     type:"POST",
+	     dataType:"json",
+	     async: false,
+	     success:function(res){
+	    	$.each(res,function(i,item){
+	    		
+	    		$('#toplist').append("<div class='row goodsLine'>"
+	    		+	" <div class='col-sm-2'>"
+	    		+"<div class='num'>"+(i+1)+"</div>"
+	    		+"</div>"
+	    		+"<div class='row goodsLine'>"
+	    		+"<div class='col-sm-3' style='width:400px;'>"+item.goodsName+"</div>"
+	    		+"<div class='col-sm-2'>"+item.num+"</div>"
+	    		+"</div>"
+	    		);
+	    		
+	
+	    		
+	    	});
+	    	
+	    	 
+	     },
+			error: function (XMLHttpRequest, textStatus, errorThrown) {
+	                 // 状态码
+	                 console.log(XMLHttpRequest.status);
+	                 // 状态
+	                 console.log(XMLHttpRequest.readyState);
+	                 // 错误信息   
+	                 console.log(textStatus);
+	             }
+	   
+	}
+	);
+	</script>
+	<script type="text/javascript" src="JS/echarts.min.js"></script>
+	<script type="text/javascript" src="JS/Statistics.js"></script>
+
+</html>

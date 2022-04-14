@@ -1,0 +1,169 @@
+body .row {
+	margin: 0px;
+	padding: 0px;
+}
+
+body .content {
+	padding: 20px;
+}
+
+body .content .topBor {
+	height: 80px;
+	color: #fff;
+	line-height: 80px;
+	font-size: 18px;
+	margin: 10px 0px 00px 0px;
+	border-radius: 2px;
+}
+
+body .content .topBor .col-sm-5 {
+	line-height: 25px;
+	font-size: 14px;
+	padding-top: 14px;
+	background: #0000001c;
+}
+
+body .content .topBor .col-sm-5 .fa {
+	font-size: 26px;
+}
+
+body .content .topBor .col-sm-7 {
+	font-size: 24px;
+}
+
+body .content .topBor .col-sm-7:hover {
+	font-size: 26px;
+	text-shadow: 1px 1px 2px #d6d6d6;
+	cursor: pointer;
+}
+
+body .content .topBor1 {
+	background: #4CAF50;
+}
+
+body .content .topBor2 {
+	background: #03A9F4;
+}
+
+body .content .topBor3 {
+	background: #9C27B0;
+}
+
+body .content .topBor4 {
+	background: #F44336;
+}
+
+body .leftTitle {
+	border-left: 4px solid #2196F3;
+	font-size: 15px;
+	height: 25px;
+	line-height: 25px;
+	padding-left: 10px;
+	margin-top: 14px;
+	margin-left: 12px;
+}
+
+body .order-bor {
+	border: 1px solid #c3c3c3;
+	height: 376px;
+}
+
+body .order-bor hr {
+	border-top: 1px solid #c3c3c3;
+	margin-top: 14px;
+	margin-bottom: 6px;
+}
+
+body .saleLine {
+	background: #ddd;
+	height: 36px;
+	line-height: 36px;
+	margin: -6px 0px 0px 0px;
+	text-align: center;
+}
+
+body .goodsLine {
+	height: 36px;
+	line-height: 36px;
+	border-bottom: 1px solid #ddd;
+	text-align: center;
+}
+
+body .goodsLine .num {
+	background: #ff7474;
+	color: #fff;
+	font-size: 14px;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	margin-top: 8px;
+	margin-left: 36%;
+}
+
+body .orderLable {
+	color: #fff;
+	background: #4caf50;
+	vertical-align: middle;
+	font-size: 15px;
+	padding: 4px 5px;
+	border-radius: 21px;
+	margin-bottom: 2px;
+	margin-right: 5px;
+}
+
+body .moneyLable {
+	color: #fff;
+	background: #FF9800;
+	vertical-align: middle;
+	font-size: 13px;
+	padding: 6px 8px 5px 8px;
+	border-radius: 21px;
+	margin-bottom: 4px;
+	margin-right: 5px;
+}
+
+body .goodsLable {
+	color: #fff;
+	background: #3F51B5;
+	vertical-align: middle;
+	font-size: 13px;
+	padding: 6px 6px 5px 6px;
+	border-radius: 21px;
+	margin-bottom: 4px;
+	margin-right: 5px;
+}
+
+body .ticketLable {
+	color: #fff;
+	background: #E91E63;
+	vertical-align: middle;
+	font-size: 13px;
+	padding: 6px 5px 5px 5px;
+	border-radius: 21px;
+	margin-bottom: 4px;
+	margin-right: 5px;
+}
+
+body .order-bor .bor-title {
+	width: 100%;
+	font-weight: 600;
+}
+
+body .order-bor .text-right {
+	color: #2196f3;
+	font-weight: 600;
+}
+
+body .ordrline {
+	line-height: 30px;
+	margin: 15px 10px 35px 13px;
+}
+
+body .order-bor .col-sm-6 {
+	width: 50%;
+	height: 157px;
+	border: 1px solid #f5f5f5;
+	border-top: none;
+	border-right: none;
+	padding-top: 15px;
+}
